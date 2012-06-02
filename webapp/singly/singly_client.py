@@ -2,9 +2,7 @@ from oauth_hook import OAuthHook
 import requests
 import simplejson
 from webapp import settings
-
-CLIENT_ID = '0d1f05ad869020e160bafa96596543b7'
-CLIENT_SECRET = '8eaddf5dbe519a76c99087ef419d3af1'
+from webapp.settings import SINGLY_CLIENT_ID, SINGLY_CLIENT_SECRET 
 
 class SinglyApiError(Exception):
     pass
@@ -89,13 +87,13 @@ class SinglyApiHelper(object):
             redirect_url = cls.redirect_url
             
         url = '%s/oauth/authorize?client_id=%s&redirect_uri=%s&service=%s' % (
-                SinglyApi.hostname, CLIENT_ID, redirect_url, service
+                SinglyApi.hostname, SINGLY_CLIENT_ID, redirect_url, service
             ) 
         return url
         
     @classmethod
     def get_access_token(cls, code):
-        api_handle = SinglyApi(CLIENT_ID, CLIENT_SECRET)
+        api_handle = SinglyApi(SINGLY_CLIENT_ID, SINGLY_CLIENT_SECRET)
         access_token = api_handle.authorize(code)
         return access_token
         

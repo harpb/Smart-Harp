@@ -12,10 +12,11 @@ def authenticate_redirect(request, service):
     
 def authorize_callback(request):
     code = request.GET.get('code')
-    access_token = SinglyCode.objects.get_access_token(code)
-    user_profile, created = UserProfile.objects.get_or_create_user(access_token)
-    user = authenticate(username=user_profile.user.username, password='password')
-    auth_login(request, user)
+    if not request.user.is_authenticated():
+        access_token = SinglyCode.objects.get_access_token(code)
+        user_profile, created = UserProfile.objects.get_or_create_user(access_token)
+        user = authenticate(username=user_profile.user.username, password='password')
+        auth_login(request, user)
     return HttpResponseRedirect('/')
         
 def index(request, template = 'index.html'):
