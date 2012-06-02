@@ -1,0 +1,32 @@
+	{{ request.user }} Sign IN:	
+		<a href="/authenticate/facebook/">Facebook</a> |
+		<a href="/authenticate/instagram/">Instagram</a> |
+		<a href="/authenticate/tumblr/">Tumblr</a> |
+		<a href="/authenticate/twitter/">Twitter</a>
+		<br/>
+	App by <a href="http://twitter.com/_harpb" style="text-decoration:None;"><b>@_harpb</b></a></br/>
+	{% if request.user.is_authenticated %}
+		<h3>Your Photos:</h3>
+		{% for photo in photos %}
+			<div style="margin: 5px 2px; text-align: center; float: left; width: 320; height: 200; background: #eee; border: 1px solid #bbb; padding:10px 3px">
+				<a href="{{ photo.oembed.url }}" target="_blank">
+					<img  height="150px" src="{{ photo.oembed.thumbnail_url|default:photo.oembed.url }}"/>
+				</a>
+				<center><b>{{ photo.oembed.title }}</b></center>
+				<center>{{ photo.oembed.description}}</center>
+			</div>
+		{% endfor %}
+		<br clear="all">
+		<br/>
+		<br/>
+		<h3>Friends' Photos:</h3>
+		{% for photo in photos_feed %}
+			<div style="margin: 5px 2px; text-align: center; float: left; width: 320; height: 200; background: #eee; border: 1px solid #bbb; padding:10px 3px">
+				<a href="{{ photo.oembed.url }}" target="_blank">
+					<img height="150px" src="{{ photo.oembed.thumbnail_url|default:photo.oembed.url }}"/>
+				</a>
+				<center><b>{{ photo.oembed.title }}</b></center>
+				<center>{{ photo.oembed.description}}</center>
+			</div>
+		{% endfor %}
+	{% endif %}

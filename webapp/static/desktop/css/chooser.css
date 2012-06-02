@@ -1,0 +1,85 @@
+#photos_window-win .details {
+    text-align: center;
+}
+
+#photos_window-win .details-info {
+    border-top: 1px solid #cccccc;
+    font: 11px Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+#photos_window-win .details-info b {
+    color: #555555;
+    display: block;
+    margin-bottom: 4px;
+    margin-left: 5px;
+}
+
+#photos_window-win .details-info span {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+#photos_window-win {
+    background: white;
+    font: 11px Arial, Helvetica, sans-serif;
+}
+
+#photos_window-win .thumb {
+    padding: 3px;
+    border: 2px solid #ccc;
+    margin: 6px 3px;
+    height: 140px;
+    width: 140px;
+    text-align: center;
+}
+
+#photos_window-win .thumb-wrap {
+    float: left;
+    margin: 4px;
+    margin-right: 0;
+    padding: 5px;
+}
+
+#photos_window-win .thumb-wrap span {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+#photos_window-win .x-view-over {
+    border:1px solid #dddddd;
+    background-color: #efefef;
+    padding: 4px;
+}
+
+#photos_window-win .x-item-selected {
+    background: #DFEDFF;
+    border: 1px solid #6593cf;
+    padding: 4px;
+}
+
+#photos_window-win .x-item-selected .thumb {
+    background:transparent;
+}
+
+#photos_window-win .x-item-selected span {
+    color:#1A4D8F;
+}
+
+#photos_window-win .loading-indicator {
+    font-size:11px;
+    background-image:url('../../resources/images/grid/loading.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left:20px;
+    margin:10px;
+}
+
+#photos_window-win .thumb img {
+    max-height: 128px;
+    max-width: 128px;
+}
