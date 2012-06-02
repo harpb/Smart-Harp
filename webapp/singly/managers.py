@@ -27,7 +27,13 @@ class UserProfileManager(models.Manager):
             for service in profiles:
                 if service != 'id':
                     service_profile = SinglyApi(access_token=singly_access_token).get_profile_by_service(service)
-                    username = service_profile['types']['contact']
+                    try:
+                        username = service_profile['types']['contact']
+                    except KeyError:
+                        try:
+                            username = service_profile['data']['name']
+                        except KeyError:
+                            username = service_profile['data']['username']
             user = User.objects.create_user(username, username +'@gmail.com', 'password')
 #            user, user_created = User.objects.get_or_create(username=username)
             user_profile = self.model(access_token = singly_access_token, user=user)
