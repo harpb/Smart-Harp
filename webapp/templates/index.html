@@ -1,10 +1,12 @@
+{{ request.user }} Sign IN:	
+	<a href="/authenticate/facebook/">Facebook</a> |
+		<a href="/authenticate/twitter/">Twitter</a>
 {% if request.user.is_authenticated %}
-	{{ request.user }}
 	<br/>
 	{% for photo in photos %}
 		<div style="margin: 5px 2px; text-align: center; float: left; width: 320; height: 200; background: #eee; border: 1px solid #bbb; padding:10px 3px">
 			<a href="{{ photo.oembed.url }}" target="_blank">
-				<img width="150px" height="150px" src="{{ photo.oembed.thumbnail_url }}"/>
+				<img  height="150px" src="{{ photo.oembed.thumbnail_url|default:photo.oembed.url }}"/>
 			</a>
 			<center><b>{{ photo.oembed.title }}</b></center>
 			<center>{{ photo.oembed.description}}</center>
@@ -13,13 +15,10 @@
 	{% for photo in photos_feed %}
 		<div style="margin: 5px 2px; text-align: center; float: left; width: 320; height: 200; background: #eee; border: 1px solid #bbb; padding:10px 3px">
 			<a href="{{ photo.oembed.url }}" target="_blank">
-				<img width="150px" height="150px" src="{{ photo.oembed.thumbnail_url }}"/>
+				<img height="150px" src="{{ photo.oembed.thumbnail_url|default:photo.oembed.url }}"/>
 			</a>
 			<center><b>{{ photo.oembed.title }}</b></center>
 			<center>{{ photo.oembed.description}}</center>
 		</div>
 	{% endfor %}
-{% else %}
-	Sign IN
-	<a href="/authenticate/twitter/">Twitter</a>
 {% endif %}

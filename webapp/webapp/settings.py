@@ -156,3 +156,7 @@ LOGGING = {
 }
 
 import configure_startup
+try:
+    import local_settings
+except:
+    pass
