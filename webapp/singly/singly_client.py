@@ -41,7 +41,7 @@ class SinglyApi(object):
                 'client_secret': self.client_secret,
                 'code': code
             }
-        status_code, content = self.make_client_request(endpoint, payload)
+        status_code, content = self.make_client_request(endpoint, 'POST', payload)
         return content['access_token']
         
     def get_profile_by_service(self, service, include_tokens = True):
@@ -80,7 +80,7 @@ class SinglyApi(object):
         return self.get_content_by_type('videos_feed')
         
 class SinglyApiHelper(object):
-    redirect_url = 'http://localhost:6230/auth/singly/callback/'
+    redirect_url = 'http://localhost:8001/authorize/callback/'
     
     @classmethod
     def get_authorize_url(cls, service, redirect_url=None):

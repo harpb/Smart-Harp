@@ -1,0 +1,6 @@
+{% if request.user.is_authenticated %}
+	{{ request.user }}
+{% else %}
+	Sign IN
+	<a href="/authenticate/twitter/">Twitter</a>
+{% endif %}

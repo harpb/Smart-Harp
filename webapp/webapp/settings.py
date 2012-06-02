@@ -4,7 +4,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 PROJECT_ROOT = os.path.abspath( os.path.dirname( os.path.dirname(__file__) ) )
-
+SERVER_ENVIRONMENT = 'LOCAL'
 ADMINS = (
      ('Harp B', 'hi@harpb.com'),
 )
@@ -117,12 +117,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    # 'django.contrib.admind/ocs',
     'django_extensions',
     'south',
     'singly',
+    'utilities',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -153,3 +154,5 @@ LOGGING = {
         },
     }
 }
+
+import configure_startup
