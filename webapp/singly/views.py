@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect, HttpResponse
-from singly.singly_client import SinglyApiHelper, SinglyApi
+from singly.singly_client import SinglyApiHelper, SinglyApi, SinglyApiError
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from singly.models import UserProfile
 from django.shortcuts import render_to_response
@@ -19,6 +19,10 @@ def authorize_callback(request):
     return HttpResponseRedirect('/')
         
 def index(request, template = 'index.html'):
+    if request.user.is_authenticated():
+        access_token = request.user.profile.all()[0].access_token
+        photos = SinglyApiHelper.get_user_photos(access_token)
+        photos_feed = SinglyApiHelper.get_photos_feed(access_token)
     response = render_to_response(
             template, locals(), context_instance=RequestContext(request)
         )        
