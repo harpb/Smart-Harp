@@ -1,0 +1,27 @@
+# SysAdmin
+fabric 
+yolk
+  
+# Django
+#-- http://www.djangoproject.com/download/1.4-beta-1/tarball/
+django
+django-debug-toolbar
+django-extensions 
+
+# Database
+#-- psycopg2
+south
+
+# TESTING
+mock
+coverage
+nose
+
+# API
+mimeparse 
+python-dateutil
+django-tastypie
+
+# HTTP Scrapping
+requests==0.12.1
+requests-oauth
