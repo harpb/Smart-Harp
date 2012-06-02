@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from singly.singly_client import SinglyApiHelper, SinglyApi, SinglyApiError
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from singly.models import UserProfile
+from singly.models import UserProfile, SinglyCode
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
@@ -12,7 +12,7 @@ def authenticate_redirect(request, service):
     
 def authorize_callback(request):
     code = request.GET.get('code')
-    access_token = SinglyApiHelper.get_access_token(code)
+    access_token = SinglyCode.objects.get_access_token(code)
     user_profile, created = UserProfile.objects.get_or_create_user(access_token)
     user = authenticate(username=user_profile.user.username, password='password')
     auth_login(request, user)
