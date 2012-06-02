@@ -1,6 +1,7 @@
 from oauth_hook import OAuthHook
 import requests
 import simplejson
+from webapp import settings
 
 CLIENT_ID = '0d1f05ad869020e160bafa96596543b7'
 CLIENT_SECRET = '8eaddf5dbe519a76c99087ef419d3af1'
@@ -80,7 +81,7 @@ class SinglyApi(object):
         return self.get_content_by_type('videos_feed')
         
 class SinglyApiHelper(object):
-    redirect_url = 'http://localhost:8001/authorize/callback/'
+    redirect_url = '%s/authorize/callback/' % settings.HOSTNAME
     
     @classmethod
     def get_authorize_url(cls, service, redirect_url=None):
