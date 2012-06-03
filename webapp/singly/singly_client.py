@@ -104,6 +104,12 @@ class SinglyApiHelper(object):
         return profiles
         
     @classmethod
+    def get_singly_id(cls, access_token):
+        api_handle = SinglyApi(access_token=access_token)
+        profiles = api_handle.get_user_profiles()
+        return profiles['id']
+        
+    @classmethod
     def get_user_photos(cls, access_token):
         return SinglyApi(access_token=access_token).get_user_photos()
         

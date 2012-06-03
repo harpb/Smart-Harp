@@ -13,20 +13,20 @@ Ext.define('MyDesktop.App', {
 
         'Ext.ux.desktop.ShortcutModel',
 
-        'MyDesktop.SystemStatus',
-        'MyDesktop.VideoWindow',
-        'MyDesktop.GridWindow',
-        'MyDesktop.TabWindow',
-        'MyDesktop.AccordionWindow',
-        'MyDesktop.Notepad',
-        'MyDesktop.Organizer',
+//        'MyDesktop.SystemStatus',
+//        'MyDesktop.VideoWindow',
+//        'MyDesktop.GridWindow',
+//        'MyDesktop.TabWindow',
+//        'MyDesktop.AccordionWindow',
+//        'MyDesktop.Notepad',
+//        'MyDesktop.Organizer',
         'MyDesktop.PhotosWindow',
-        'MyDesktop.VideoWindow',
-        'MyDesktop.BogusMenuModule',
-        'MyDesktop.BogusModule',
+//        'MyDesktop.VideoWindow',
+//        'MyDesktop.BogusMenuModule',
+//        'MyDesktop.BogusModule',
 
 //        'MyDesktop.Blockalanche',
-        'MyDesktop.Settings'
+//        'MyDesktop.Settings'
     ],
 
     init: function() {
@@ -39,17 +39,17 @@ Ext.define('MyDesktop.App', {
 
     getModules : function(){
         return [
-            new MyDesktop.VideoWindow(),
-            //new MyDesktop.Blockalanche(),
-            new MyDesktop.SystemStatus(),
-            new MyDesktop.GridWindow(),
-            new MyDesktop.TabWindow(),
-            new MyDesktop.AccordionWindow(),
-            new MyDesktop.Notepad(),
-            new MyDesktop.Organizer(),
+//            new MyDesktop.VideoWindow(),
+//            //new MyDesktop.Blockalanche(),
+//            new MyDesktop.SystemStatus(),
+//            new MyDesktop.GridWindow(),
+//            new MyDesktop.TabWindow(),
+//            new MyDesktop.AccordionWindow(),
+//            new MyDesktop.Notepad(),
+//            new MyDesktop.Organizer(),
             new MyDesktop.PhotosWindow(),
-            new MyDesktop.BogusMenuModule(),
-            new MyDesktop.BogusModule()
+//            new MyDesktop.BogusMenuModule(),
+//            new MyDesktop.BogusModule()
         ];
     },
 
@@ -71,7 +71,7 @@ Ext.define('MyDesktop.App', {
 //                    { name: 'Notepad', iconCls: 'notepad-shortcut', module: 'notepad' },
 //                    { name: 'System Status', iconCls: 'cpu-shortcut', module: 'systemstatus'}
 					{ name: 'Photos', iconCls: 'sink-shortcut', module: 'photos_window'},
-					{ name: 'Videos', iconCls: 'sink-shortcut', module: 'video'},
+//					{ name: 'Videos', iconCls: 'sink-shortcut', module: 'video'},
                 ]
             }),
 

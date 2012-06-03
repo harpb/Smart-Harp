@@ -12,10 +12,12 @@ Ext.define('Ext.org.ImageView', {
     extend: 'Ext.view.View',
     alias : 'widget.imageview',
     requires: ['Ext.data.Store'],
-    mixins: {
-        dragSelector: 'Ext.ux.DataView.DragSelector',
-        draggable   : 'Ext.ux.DataView.Draggable'
-    },
+//    mixins: {
+//        dragSelector: 'Ext.ux.DataView.DragSelector',
+//        draggable   : 'Ext.ux.DataView.Draggable'
+//    },
+
+    id: 'explorer-content',
     
     tpl: [
         '<tpl for=".">',
@@ -30,18 +32,18 @@ Ext.define('Ext.org.ImageView', {
     ],
     
     itemSelector: 'div.thumb-wrap',
-    multiSelect: true,
-    singleSelect: false,
+//    multiSelect: true,
+    singleSelect: true,
     cls: 'x-image-view',
     autoScroll: true,
     
     initComponent: function() {
         this.store = Ext.create('Ext.data.Store', {
-            autoLoad: true,
+//            autoLoad: true,
             fields: ['name', 'thumbnail_url', 'url'],
             proxy: {
                 type: 'ajax',
-                url : '/rest/v1/photo/',
+                url : '/rest/v1/',
                 reader: {
                     type: 'json',
                     root: 'objects'
@@ -49,22 +51,37 @@ Ext.define('Ext.org.ImageView', {
             }
         });
         
-        this.mixins.dragSelector.init(this);
-        this.mixins.draggable.init(this, {
-            ddConfig: {
-                ddGroup: 'organizerDD'
-            },
-            ghostTpl: [
-                '<tpl for=".">',
-                    '<img src="../view/chooser/icons/{thumb}" />',
-                    '<tpl if="xindex % 4 == 0"><br /></tpl>',
-                '</tpl>',
-                '<div class="count">',
-                    '{[values.length]} images selected',
-                '<div>'
-            ]
-        });
-        
+//        this.mixins.dragSelector.init(this);
+//        this.mixins.draggable.init(this, {
+//            ddConfig: {
+//                ddGroup: 'organizerDD'
+//            },
+//            ghostTpl: [
+//                '<tpl for=".">',
+//                    '<img src="../view/chooser/icons/{thumb}" />',
+//                    '<tpl if="xindex % 4 == 0"><br /></tpl>',
+//                '</tpl>',
+//                '<div class="count">',
+//                    '{[values.length]} images selected',
+//                '<div>'
+//            ]
+//        });
+		//trigger the data store load
         this.callParent();
-    }
+    },
+
+		getFeed: function(feedType){
+    		var feeds = {
+				'photo': '/photo/',
+				'photo_feed': '/photo_feed/',
+				'video': '/video/',
+				'video_feed': '/video_feed/',
+    		
+    		}
+    		var endpoint = feeds[feedType];
+			this.store.proxy.url = '/rest/v1' + endpoint
+			params = {start:0, limit:25};
+			console.log(this.store)
+			this.store.load({params: params});	
+		},
 });

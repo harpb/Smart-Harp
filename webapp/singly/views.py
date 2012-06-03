@@ -14,7 +14,9 @@ def authorize_callback(request):
     code = request.GET.get('code')
     if not request.user.is_authenticated():
         access_token = SinglyCode.objects.get_access_token(code)
-        user_profile, created = UserProfile.objects.get_or_create_user(access_token)
+        singly_id = SinglyApiHelper.get_singly_id(access_token)
+        user_profile, created = UserProfile.objects.get_or_create_user(
+                singly_id, access_token)
         user = authenticate(username=user_profile.user.username, password='password')
         auth_login(request, user)
     return HttpResponseRedirect('/')

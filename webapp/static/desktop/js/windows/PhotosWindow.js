@@ -9,9 +9,7 @@ Ext.define('MyDesktop.PhotosWindow', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [
-	    'Ext.org.ImageView',
-	    'Ext.org.AlbumTree',
-	    'Ext.org.OrgPanel',
+	    'Ext.org.Explorer',
 	    'Ext.data.TreeStore',
 	    'Ext.data.proxy.Ajax',
 	    'Ext.tree.Column',
@@ -37,6 +35,7 @@ Ext.define('MyDesktop.PhotosWindow', {
         
         if (!win) {
 //            win = Ext.create('Ext.org.OrgPanel', {
+        	explorer = Ext.create('Ext.org.Explorer', {});
         	win = desktop.createWindow({
         		id: window_id,
 	            title: this.name,
@@ -45,45 +44,11 @@ Ext.define('MyDesktop.PhotosWindow', {
 	            maximized: true,
 	            width: 480,
 	            height: 240,
-	        	items: [
+	        	items:   [
 	            {
-                    xtype: 'panel',
-		            layout: 'border',
-		            items: [
-			            {
-			                xtype: 'albumtree',
-			                region: 'west',
-			                padding: 5,
-			                width: 200
-			            },
-			            {
-			                xtype: 'panel',
-			                title: 'My Images',
-			                layout: 'fit',
-			                region: 'center',
-			                padding: '5 5 5 0',
-			                items: {
-			                    xtype: 'imageview',
-			                    /*  (add a '/' at the front of this line to turn this on)
-			                    listeners: {
-			                        containermouseout: function (view, e) {
-			                            Ext.log('ct', e.type);
-			                        },
-			                        containermouseover: function (view, e) {
-			                            Ext.log('ct', e.type);
-			                        },
-			                        itemmouseleave: function (view, record, item, index, e) {
-			                            Ext.log('item', e.type, ' id=', record.id);
-			                        },
-			                        itemmouseenter: function (view, record, item, index, e) {
-			                            Ext.log('item', e.type, ' id=', record.id);
-			                        }
-			                    },/**/
-			                    trackOver: true
-			                }
-			            }
-			        ]
-			   }]
+	                xtype: 'explorer',
+	            }
+	        ]
 	        });
         }
 

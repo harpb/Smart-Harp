@@ -11,7 +11,6 @@ Ext.define('MyDesktop.Organizer', {
     requires: [
 	    'Ext.org.ImageView',
 	    'Ext.org.AlbumTree',
-	    'Ext.org.OrgPanel',
 	    'Ext.data.TreeStore',
 	    'Ext.data.proxy.Ajax',
 	    'Ext.tree.Column',

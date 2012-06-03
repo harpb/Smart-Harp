@@ -19,6 +19,7 @@ class SinglyCode(models.Model):
         
 class UserProfile(models.Model):
     access_token = models.CharField(max_length=260, null=True, blank=True)
+    singly_id = models.CharField(max_length=260, null=True, blank=True)
     user = models.ForeignKey(User, related_name='profile')
     
     objects = UserProfileManager()

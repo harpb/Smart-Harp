@@ -1,8 +1,8 @@
-#photos_window-win .details {
+.x-image-view .details {
     text-align: center;
 }
 
-#photos_window-win .details-info {
+.x-image-view .details-info {
     border-top: 1px solid #cccccc;
     font: 11px Arial, Helvetica, sans-serif;
     margin-top: 5px;
@@ -10,33 +10,33 @@
     text-align: left;
 }
 
-#photos_window-win .details-info b {
+.x-image-view .details-info b {
     color: #555555;
     display: block;
     margin-bottom: 4px;
     margin-left: 5px;
 }
 
-#photos_window-win .details-info span {
+.x-image-view .details-info span {
     display: block;
     margin-bottom: 5px;
     margin-left: 10px;
 }
 
-#photos_window-win {
+.x-image-view {
     background: white;
     font: 11px Arial, Helvetica, sans-serif;
 }
 
 
-#photos_window-win .thumb-wrap {
+.x-image-view .thumb-wrap {
     float: left;
     margin: 4px;
     margin-right: 0;
     padding: 5px;
 }
 
-#photos_window-win .thumb {
+.x-image-view .thumb {
     padding: 3px;
     margin: 6px 3px;
     height: 140px;
@@ -45,14 +45,14 @@
     text-align: center;
 }
 
-#photos_window-win .thumb img {
+.x-image-view .thumb img {
     max-height: 128px;
     max-width: 128px;
     vertical-align: bottom;
     box-shadow: 3px 2px 3px #AAAAAA;
 }
 
-#photos_window-win .thumb-wrap span {
+.x-image-view .thumb-wrap span {
 	padding-top: 4px;
     display: block;
     overflow: hidden;
@@ -61,27 +61,27 @@
     height: 1.5em;
 }
 
-#photos_window-win .x-view-over {
+.x-image-view .x-view-over {
     border:1px solid #dddddd;
     background-color: #efefef;
     padding: 4px;
 }
 
-#photos_window-win .x-item-selected {
+.x-image-view .x-item-selected {
     background: #DFEDFF;
     border: 1px solid #6593cf;
     padding: 4px;
 }
 
-#photos_window-win .x-item-selected .thumb {
+.x-image-view .x-item-selected .thumb {
     background:transparent;
 }
 
-#photos_window-win .x-item-selected span {
+.x-image-view .x-item-selected span {
     color:#1A4D8F;
 }
 
-#photos_window-win .loading-indicator {
+.x-image-view .loading-indicator {
     font-size:11px;
     background-image:url('../../resources/images/grid/loading.gif');
     background-repeat: no-repeat;

@@ -24,48 +24,73 @@ Ext.define('Ext.org.AlbumTree', {
     displayField: 'name',
     
     initComponent: function() {
-        this.count = 1;
-        
-        this.tbar = [
-            {
-                text: 'New Album',
-                iconCls: 'album-btn',
-                scope: this,
-                handler: this.addAlbum
-            }
-        ];
-        
-        this.store = Ext.create('Ext.data.TreeStore', {
-            fields: ['name'],
-            
-            root: {
-                name: 'Root',
-                allowDrop: false,
-                expanded: true,
-                children: [
-                    {
-                        name   : 'Album 1',
-                        iconCls: 'album-btn',
-                        children: []
-                    }
-                ]
-            }
-        });
+	
+        this.items = [
+	        {
+	            // Explicitly define the xtype of this Component configuration.
+	            // This tells the Container (the tab panel in this case)
+	            // to instantiate a Ext.panel.Panel when it deems necessary
+	            xtype: 'panel',
+	            title: 'Tab One',
+	            html: 'The first tab',
+	            listeners: {
+	                render: function() {
+	                    Ext.MessageBox.alert('Rendered One', 'Tab One was rendered.');
+	                }
+	            }
+	        },
+	        {
+	            // this component configuration does not have an xtype since 'panel' is the default
+	            // xtype for all Component configurations in a Container
+	            title: 'Tab Two',
+	            html: 'The second tab',
+	            listeners: {
+	                render: function() {
+	                    Ext.MessageBox.alert('Rendered One', 'Tab Two was rendered.');
+	                }
+	            }
+	        }
+	    ];
         
         this.callParent();
     },
     
-    /**
-     * Adds a new album node to the root
+	/**
+     * Create the context menu
+     * @private
      */
-    addAlbum: function() {
-        var root = this.store.getRootNode();
-        this.count++;
-        
-        root.appendChild({
-            name: 'Album ' + this.count,
-            iconCls: 'album-btn',
-            children: []
+    createMenu: function(){
+        this.menu = Ext.create('widget.menu', {
+            items: [{
+                scope: this,
+                handler: this.onLoadClick,
+                text: 'Load feed',
+                iconCls: 'feed-load'
+            }, this.removeAction, '-', this.addAction],
+            listeners: {
+                hide: function(c){
+                    c.activeFeed = null;
+                }
+            }
         });
-    }
+    },
+    
+    /**
+     * React to the load feed menu click.
+     * @private
+     */
+    onLoadClick: function(){
+        this.loadFolder(this.menu.activeFeed);
+    },
+
+    /**
+     * Loads a feed.
+     * @private
+     * @param {Ext.data.Model} rec The feed
+     */
+    loadFolder: function(rec){
+        if (rec) {
+            this.fireEvent('folder_select', this, rec.get('title'), rec.get('url'));
+        }
+    },
 });

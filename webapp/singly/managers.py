@@ -17,10 +17,10 @@ class SinglyCodeManager(models.Manager):
             
 class UserProfileManager(models.Manager):   
          
-    def get_or_create_user(self, singly_access_token):
+    def get_or_create_user(self, singly_id, singly_access_token):
         try:
             created = False
-            user_profile = self.get(access_token = singly_access_token)
+            user_profile = self.get(singly_id = singly_id)
         except ObjectDoesNotExist:
             created = True
             profiles = SinglyApi(access_token=singly_access_token).get_user_profiles()
@@ -34,8 +34,16 @@ class UserProfileManager(models.Manager):
                             username = service_profile['data']['name']
                         except KeyError:
                             username = service_profile['data']['username']
-            user = User.objects.create_user(username, username +'@gmail.com', 'password')
+            try:
+                raise ObjectDoesNotExist
+                user = User.objects.get(username=username)
+            except ObjectDoesNotExist:
+                user = User.objects.create_user(username, username +'@gmail.com', 'password')
 #            user, user_created = User.objects.get_or_create(username=username)
-            user_profile = self.model(access_token = singly_access_token, user=user)
+            user_profile = self.model(
+                    access_token = singly_access_token,
+                    singly_id = singly_id,
+                    user=user
+                )
             user_profile.save()
         return user_profile, created
