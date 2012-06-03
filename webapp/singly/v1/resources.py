@@ -6,10 +6,13 @@ from tastypie.constants import ALL_WITH_RELATIONS, ALL
 from singly.singly_client import SinglyApiHelper, SinglyApi
 from singly.models import Photo
 from tastypie.serializers import Serializer
+import random
 
 class PhotoResource(Resource):
     
+    description = fields.CharField()
     name = fields.CharField()
+    service = fields.CharField()
     thumbnail_url = fields.CharField()
     url = fields.CharField()
     
@@ -29,7 +32,13 @@ class PhotoResource(Resource):
         return [ photo['oembed'] for photo in photos]
                 
     def dehydrate_name(self, bundle):
-        return 'leaf'
+        return bundle.obj.get('title') or bundle.obj.get('author_name', '')
+        
+    def dehydrate_description(self, bundle):
+        return bundle.obj.get('description', '')
+        
+    def dehydrate_service(self, bundle):
+        return bundle.obj.get('provider_name', '').lower()
         
     def dehydrate_thumbnail_url(self, bundle):
         return bundle.obj.get('thumbnail_url') or bundle.obj['url']

@@ -38,7 +38,7 @@ Ext.define('Ext.org.ImageView', {
     initComponent: function() {
         this.store = Ext.create('Ext.data.Store', {
             autoLoad: true,
-            fields: ['thumbnail_url', 'url', {name: 'leaf', defaultValue: true}],
+            fields: ['name', 'thumbnail_url', 'url'],
             proxy: {
                 type: 'ajax',
                 url : '/rest/v1/photo/',
