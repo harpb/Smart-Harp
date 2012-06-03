@@ -35,7 +35,6 @@ class UserProfileManager(models.Manager):
                         except KeyError:
                             username = service_profile['data']['username']
             try:
-                raise ObjectDoesNotExist
                 user = User.objects.get(username=username)
             except ObjectDoesNotExist:
                 user = User.objects.create_user(username, username +'@gmail.com', 'password')
