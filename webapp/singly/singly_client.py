@@ -7,15 +7,19 @@ from webapp.settings import SINGLY_CLIENT_ID, SINGLY_CLIENT_SECRET
 class SinglyApiError(Exception):
     pass
     
+DEFAULT_LIMIT = 20
+    
 class SinglyApi(object):
     
     hostname = 'https://api.singly.com'
     api_version = 0
     
-    def __init__(self, client_id=None, client_secret=None, access_token=None):
+    def __init__(self, client_id=None, client_secret=None, access_token=None, page=1, limit=None):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
+        self.page = page
+        self.limit = limit or DEFAULT_LIMIT 
         
     def make_client_request(self, endpoint, method='GET', payload={}):
         # create consumer and token
@@ -24,6 +28,7 @@ class SinglyApi(object):
         if method == 'GET':
             if self.access_token is not None:
                 payload['access_token'] = self.access_token
+                payload['min_count'] = 100
             response = requests.get(url, params=payload)
         else:
             response = requests.post(url, payload)

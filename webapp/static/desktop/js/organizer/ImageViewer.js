@@ -37,18 +37,4 @@ Ext.define('Ext.org.ImageViewer', {
 	 
 		this.callParent();
 	},
-
-	navigate: function(){
-		console.log("navigate");
-	},
-	
-	setRecords: function (records){
-		console.log("Records: "+ records);
-		this.records = records;
-		refreshImagesPanel();
-	},
-	
-	refreshImagesPanel: function(){
-		
-	}
 });

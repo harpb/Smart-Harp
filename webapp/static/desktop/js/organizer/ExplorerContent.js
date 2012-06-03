@@ -44,6 +44,7 @@ Ext.define('Ext.org.ExplorerContent', {
 		
         this.store = Ext.create('Ext.data.Store', {
 //            autoLoad: true,
+//        	pageSize: 5,
             fields: ['description', 'name', 'service', 'thumbnail_url', 'type', 'url'],
             proxy: {
                 type: 'ajax',
@@ -55,7 +56,7 @@ Ext.define('Ext.org.ExplorerContent', {
             }
         });
         
-
+//        this.store.loadPage(2);
 
 //		this.listeners = {
 //				itemclick: function(source, record) {
@@ -84,7 +85,7 @@ Ext.define('Ext.org.ExplorerContent', {
     		}
     		var endpoint = feeds[feedType];
 			this.store.proxy.url = '/rest/v1/' + feedType +'/'
-			params = {start:0, limit:25};
+			params = {start:0, limit:100};
 //			console.log(this.store)
 			this.store.load({params: params});	
 		},

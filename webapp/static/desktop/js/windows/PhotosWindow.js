@@ -19,12 +19,12 @@ Ext.define('MyDesktop.PhotosWindow', {
     ],
 
     id:'photos_window',
-    name: 'My Social',
+    name: 'Photo Viewer',
 
     init : function(){
         this.launcher = {
             text: this.name,
-            iconCls:'icon-accordion'
+            iconCls:'icon-grid'
         };
     },
 
@@ -39,7 +39,7 @@ Ext.define('MyDesktop.PhotosWindow', {
         	win = desktop.createWindow({
         		id: window_id,
 	            title: this.name,
-	            iconCls: 'icon-accordion',
+	            iconCls: 'icon-grid',
 	            layout: 'fit',
 	            maximized: true,
 	            width: 480,

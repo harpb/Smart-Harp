@@ -26,10 +26,10 @@ def logout(request):
     return HttpResponseRedirect('/')
     
 def index(request, template = 'index.html'):
-    if request.user.is_authenticated():
-        access_token = request.user.profile.all()[0].access_token
-        photos = SinglyApiHelper.get_user_photos(access_token)
-        photos_feed = SinglyApiHelper.get_photos_feed(access_token)
+#    if request.user.is_authenticated():
+#        access_token = request.user.profile.all()[0].access_token
+#        photos = SinglyApiHelper.get_user_photos(access_token)
+#        photos_feed = SinglyApiHelper.get_photos_feed(access_token)
     response = render_to_response(
             template, locals(), context_instance=RequestContext(request)
         )        

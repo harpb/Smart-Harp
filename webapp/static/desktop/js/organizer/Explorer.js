@@ -25,10 +25,11 @@ Ext.define('Ext.org.Explorer', {
 	        layout: 'fit',
 	        region: 'center',
 	        padding: '0 0 0 5',
-		    width: 160,
+            autoScroll: true,
 	        items: {
 	            xtype: 'explorercontent',
 	            name: "List of Files",
+	            autoScroll: true,
 //	            trackOver: true,
 	            listeners: {
 	            	scope: this,
@@ -50,7 +51,7 @@ Ext.define('Ext.org.Explorer', {
        });
        
        // Go ahead and create the TreePanel now so that we can use it below
-       var treePanel = Ext.create('Ext.tree.Panel', {
+		this.treePanel = Ext.create('Ext.tree.Panel', {
            id: 'tree-panel',
            title: 'Folders',
            region:'north',
@@ -66,7 +67,7 @@ Ext.define('Ext.org.Explorer', {
        });
 
 
-       treePanel.getSelectionModel().on('select', function(selModel, record) {
+       this.treePanel.getSelectionModel().on('select', function(selModel, record) {
            if (record.get('leaf')) {
         	   var feedType = record.data['id'] 
         	   var explorerContent = Ext.getCmp("explorer-content")
@@ -106,7 +107,7 @@ Ext.define('Ext.org.Explorer', {
                split:true,
                margins: '0 0 0 0',
                width: 140,
-               items: [treePanel, detailsPanel]
+               items: [this.treePanel, detailsPanel]
            }, 
                filesPanel,
                this.previewPanel
@@ -117,8 +118,11 @@ Ext.define('Ext.org.Explorer', {
     
     onFileSelect: function(dataview, selections) {
         var selected = selections[0];
-        
+        var dom = this.treePanel.getSelectionModel();
         if (selected) {
+        	var node = this.getNode(selections[0]);
+            Ext.fly(node).scrollIntoView(this.el);
+
 //            this.down('preview-panel').loadRecord(selected);
         	if(selected.data.type == 'video')
 			{

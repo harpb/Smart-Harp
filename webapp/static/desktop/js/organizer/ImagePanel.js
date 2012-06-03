@@ -33,7 +33,7 @@ Ext.define('Ext.org.ImagePanel', {
      * Loads a given image record into the panel. Animates the newly-updated panel in from the left over 250ms.
      */
     loadRecord: function(image) {
-    	this.title = image.data.title;
+    	this.setTitle(image.data.name);
         this.body.hide();
         this.tpl.overwrite(this.body, image.data);
         this.body.slideIn('l', {
