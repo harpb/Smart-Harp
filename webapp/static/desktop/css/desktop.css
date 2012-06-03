@@ -288,6 +288,12 @@
 .save {
     background-image:url(/static/desktop/icons/save.gif) !important;
 }
+
+
+.icon-accordion{
+    background-image: url(../images/im.png);
+}
+
 .accordion {
     background-image:url(../images/accordian.gif) !important;
 }

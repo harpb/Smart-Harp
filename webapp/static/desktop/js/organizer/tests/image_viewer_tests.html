@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Test Image Viewer | Organizer</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/ext-js/css/ext-all.css" />    
+    <script type="text/javascript" src="/static/ext-js/js/ext-all-debug.js"></script>
+	<script type="text/javascript">
+		Ext.Loader.setPath({
+		    'Ext.org': '/static/desktop/js/organizer',
+		    'Ext.ux.DataView': '/static/desktop/js/DataView',
+		});
+		Ext.Loader.setConfig({enabled:true});
+
+		function launch(){
+			var testPanel = Ext.create('Ext.org.ImageViewer', {
+              	title: "Image Viewer"
+	       	});
+			Ext.create('Ext.container.Viewport', {
+	            layout: 'fit',
+	            items: [testPanel]
+	        });
+		} 
+		Ext.application({
+		    name: 'HelloExt',
+		    launch: launch
+		});
+	</script>
+</head>
+
+<body>
+
+</body>
+</html>

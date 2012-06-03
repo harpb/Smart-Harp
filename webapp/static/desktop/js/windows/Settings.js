@@ -140,7 +140,7 @@ Ext.define('MyDesktop.Settings', {
         var me = this;
 
         if (record.data.img) {
-            me.selected = 'wallpapers/' + record.data.img;
+            me.selected = '/static/desktop/images/wallpapers/' + record.data.img;
         } else {
             me.selected = Ext.BLANK_IMAGE_URL;
         }

@@ -20,13 +20,14 @@ Ext.define('MyDesktop.App', {
 //        'MyDesktop.AccordionWindow',
 //        'MyDesktop.Notepad',
 //        'MyDesktop.Organizer',
-        'MyDesktop.PhotosWindow',
+		'MyDesktop.PhotosWindow',
+		'MyDesktop.ImageViewerWindow',
 //        'MyDesktop.VideoWindow',
 //        'MyDesktop.BogusMenuModule',
 //        'MyDesktop.BogusModule',
 
 //        'MyDesktop.Blockalanche',
-//        'MyDesktop.Settings'
+        'MyDesktop.Settings'
     ],
 
     init: function() {
@@ -47,7 +48,8 @@ Ext.define('MyDesktop.App', {
 //            new MyDesktop.AccordionWindow(),
 //            new MyDesktop.Notepad(),
 //            new MyDesktop.Organizer(),
-            new MyDesktop.PhotosWindow(),
+			  new MyDesktop.PhotosWindow(),
+//			  new MyDesktop.ImageViewerWindow(),
 //            new MyDesktop.BogusMenuModule(),
 //            new MyDesktop.BogusModule()
         ];
@@ -70,12 +72,13 @@ Ext.define('MyDesktop.App', {
 //                    { name: 'Accordion Window', iconCls: 'accordion-shortcut', module: 'acc-win' },
 //                    { name: 'Notepad', iconCls: 'notepad-shortcut', module: 'notepad' },
 //                    { name: 'System Status', iconCls: 'cpu-shortcut', module: 'systemstatus'}
-					{ name: 'Photos', iconCls: 'sink-shortcut', module: 'photos_window'},
+					{ name: 'Photo Viewer', iconCls: 'sink-shortcut', module: 'photos_window'},
+//					{ name: 'Image Viewer', iconCls: 'sink-shortcut', module: 'image-viewer'},
 //					{ name: 'Videos', iconCls: 'sink-shortcut', module: 'video'},
                 ]
             }),
 
-            wallpaper: '',
+            wallpaper: '/static/desktop/images/wallpapers/desk.jpg',
             wallpaperStretch: false
         });
     },

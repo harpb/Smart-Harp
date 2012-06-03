@@ -1,9 +1,13 @@
 { 
 	text: '.',
+	mainItem: 1,
+	expanded: true,
 	children: [
 		{
 		    text:'Together',
 		    expanded: true,
+		    activeItem: 2,
+		    mainItem: 1,
 		    children:[{
 		        id:'photo',
 		        leaf:true,

@@ -14,6 +14,7 @@ class MediaResource(Resource):
     name = fields.CharField()
     service = fields.CharField()
     thumbnail_url = fields.CharField()
+    type = fields.CharField()
     url = fields.CharField()
     
     class Meta():
@@ -41,6 +42,9 @@ class MediaResource(Resource):
         
     def dehydrate_thumbnail_url(self, bundle):
         return bundle.obj.get('thumbnail_url') or bundle.obj['url']
+        
+    def dehydrate_type(self, bundle):
+        return bundle.obj.get('type')
         
     def dehydrate_url(self, bundle):
         return bundle.obj['url']

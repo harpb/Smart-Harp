@@ -1,8 +1,8 @@
-.x-image-view .details {
+.x-explorer-content .details {
     text-align: center;
 }
 
-.x-image-view .details-info {
+.x-explorer-content .details-info {
     border-top: 1px solid #cccccc;
     font: 11px Arial, Helvetica, sans-serif;
     margin-top: 5px;
@@ -10,26 +10,26 @@
     text-align: left;
 }
 
-.x-image-view .details-info b {
+.x-explorer-content .details-info b {
     color: #555555;
     display: block;
     margin-bottom: 4px;
     margin-left: 5px;
 }
 
-.x-image-view .details-info span {
+.x-explorer-content .details-info span {
     display: block;
     margin-bottom: 5px;
     margin-left: 10px;
 }
 
-.x-image-view {
+.x-explorer-content {
     background: white;
     font: 11px Arial, Helvetica, sans-serif;
 }
 
 
-.x-image-view .thumb-wrap {
+.x-explorer-content .thumb-wrap {
     float: left;
     margin: 4px;
     margin-right: 0;
@@ -38,7 +38,7 @@
     color: black;
 }
 
-.x-image-view .thumb {
+.x-explorer-content .thumb {
     padding: 3px;
     margin: 6px 3px;
     height: 140px;
@@ -47,14 +47,14 @@
     text-align: center;
 }
 
-.x-image-view .thumb img {
+.x-explorer-content .thumb img {
     max-height: 128px;
     max-width: 128px;
     vertical-align: bottom;
     box-shadow: 3px 2px 3px #AAAAAA;
 }
 
-.x-image-view .thumb-wrap span {
+.x-explorer-content .thumb-wrap span {
 	padding-top: 4px;
     display: block;
     overflow: hidden;
@@ -63,27 +63,27 @@
     height: 1.5em;
 }
 
-.x-image-view .x-view-over {
+.x-explorer-content .x-view-over {
     border:1px solid #dddddd;
     background-color: #efefef;
     padding: 4px;
 }
 
-.x-image-view .x-item-selected {
+.x-explorer-content .x-item-selected {
     background: #DFEDFF;
     border: 1px solid #6593cf;
     padding: 4px;
 }
 
-.x-image-view .x-item-selected .thumb {
+.x-explorer-content .x-item-selected .thumb {
     background:transparent;
 }
 
-.x-image-view .x-item-selected span {
+.x-explorer-content .x-item-selected span {
     color:#1A4D8F;
 }
 
-.x-image-view .loading-indicator {
+.x-explorer-content .loading-indicator {
     font-size:11px;
     background-image:url('../../resources/images/grid/loading.gif');
     background-repeat: no-repeat;
