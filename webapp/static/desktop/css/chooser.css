@@ -60,7 +60,13 @@
     overflow: hidden;
     text-align: center;
     width: 140px;
-    height: 1.5em;
+    height: 2em;
+}
+
+.x-explorer-content .thumb-wrap span img{
+	float: left;
+	width: 12px;
+	height: 12px;
 }
 
 .x-explorer-content .x-view-over {

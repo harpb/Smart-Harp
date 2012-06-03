@@ -29,7 +29,7 @@ Ext.define('Ext.org.ExplorerContent', {
                     (!Ext.isIE6? '<img src="{thumbnail_url}" />' : 
                     '<div style="width:76px;height:76px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'../view/chooser/icons/{thumb}\')"></div>'),
                 '</div>',
-                '<span>{name}</span>',
+                '<span><img src="/static/desktop/icons/services/{service}.gif"> {name}</span>',
             '</a>',
         '</tpl>'
     ],

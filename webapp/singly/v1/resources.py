@@ -74,6 +74,9 @@ class ServiceResource(MediaResource):
         medias = self.make_singly_request(request)
         return [media['data'] for media in medias]
                 
+    def dehydrate_service(self, bundle):
+        return self.Meta.resource_name
+        
 class FacebookResource(ServiceResource):
     class Meta(MediaResource.Meta):
         resource_name = 'facebook'
