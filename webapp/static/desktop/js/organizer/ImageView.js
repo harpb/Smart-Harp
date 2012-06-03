@@ -21,17 +21,17 @@ Ext.define('Ext.org.ImageView', {
     
     tpl: [
         '<tpl for=".">',
-            '<div class="thumb-wrap">',
+            '<a class="thumb-wrap" href="{url}" target="_blank">',
                 '<div class="thumb">',
                     (!Ext.isIE6? '<img src="{thumbnail_url}" />' : 
                     '<div style="width:76px;height:76px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'../view/chooser/icons/{thumb}\')"></div>'),
                 '</div>',
                 '<span>{name}</span>',
-            '</div>',
+            '</a>',
         '</tpl>'
     ],
     
-    itemSelector: 'div.thumb-wrap',
+    itemSelector: 'a.thumb-wrap',
 //    multiSelect: true,
     singleSelect: true,
     cls: 'x-image-view',
@@ -50,6 +50,17 @@ Ext.define('Ext.org.ImageView', {
                 }
             }
         });
+        
+		eventHandler = function(){console.log("THE mouse over")}
+		this.on({
+		    cellClick: {fn: eventHandler, scope: this, single: true},
+		    mouseover: {fn: eventHandler, scope: this}
+		});
+		
+		//listen for node click?
+		this.on("click", function(vw, index, node, e){
+		alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+		});
         
 //        this.mixins.dragSelector.init(this);
 //        this.mixins.draggable.init(this, {
@@ -81,7 +92,7 @@ Ext.define('Ext.org.ImageView', {
     		var endpoint = feeds[feedType];
 			this.store.proxy.url = '/rest/v1/' + feedType +'/'
 			params = {start:0, limit:25};
-			console.log(this.store)
+//			console.log(this.store)
 			this.store.load({params: params});	
 		},
 });

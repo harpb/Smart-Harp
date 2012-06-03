@@ -29,7 +29,13 @@ Ext.define('Ext.org.Explorer', {
 	            trackOver: true
 	        }
 		});
-
+		
+		eventHandler = function(){console.log("mouse over")}
+		filesPanel.on({
+		    cellClick: {fn: eventHandler, scope: this, single: true},
+		    mouseover: {fn: eventHandler, scope: filesPanel}
+		});
+		
 		var store =  Ext.create('Ext.data.TreeStore', {
            root: {
                expanded: true
