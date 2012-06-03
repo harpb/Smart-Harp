@@ -120,8 +120,8 @@ Ext.define('Ext.org.Explorer', {
         var selected = selections[0];
         var dom = this.treePanel.getSelectionModel();
         if (selected) {
-        	var node = this.getNode(selections[0]);
-            Ext.fly(node).scrollIntoView(this.el);
+//        	var node = this.getNode(selections[0]);
+//            Ext.fly(node).scrollIntoView(this.el);
 
 //            this.down('preview-panel').loadRecord(selected);
         	if(selected.data.type == 'video')
