@@ -21,6 +21,10 @@ def authorize_callback(request):
         auth_login(request, user)
     return HttpResponseRedirect('/')
         
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect('/')
+    
 def index(request, template = 'index.html'):
     if request.user.is_authenticated():
         access_token = request.user.profile.all()[0].access_token

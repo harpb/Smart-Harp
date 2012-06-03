@@ -9,5 +9,9 @@ urlpatterns = patterns('singly.views',
             'authorize_callback', 
             name='authorize_callback'
         ),
+    url(r'^logout/$', 
+            'logout', 
+            name='logout'
+        ),
     url(r'^$', 'index', name='index'),
 )

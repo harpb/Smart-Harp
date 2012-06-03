@@ -124,7 +124,13 @@ Ext.define('MyDesktop.App', {
     },
 
     onLogout: function () {
-        Ext.Msg.confirm('Logout', 'Are you sure you want to logout?');
+        Ext.Msg.confirm('Logout', 'Are you sure you want to logout?',
+        	function(btn, text){
+            	if (btn.toLowerCase() == 'yes'){
+            		window.location = '/logout/'
+            	}
+            }
+        );
     },
 
     onSettings: function () {

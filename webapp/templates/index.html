@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<title>Smart Harp</title>
+	<title>Social Key</title>
 
 	{% if request.user.is_authenticated %}
 	    <link rel="stylesheet" type="text/css" href="/static/ext-js/css/ext-all.css" />
@@ -17,12 +17,14 @@
 
 <body>
 	{% if not request.user.is_authenticated %}
-		Sign IN:	
+		<h1>bit.ly/socialkey</h1>
+		Sign-in to continue:	
 			<a href="/authenticate/facebook/">Facebook</a> |
 			<a href="/authenticate/instagram/">Instagram</a> |
 			<a href="/authenticate/tumblr/">Tumblr</a> |
 			<a href="/authenticate/twitter/">Twitter</a>
 			<br/>
+		Source Code: <a href="https://github.com/harpb/Smart-Harp" style="text-decoration:None;"><b>Github</b></a></br/>
 		App by <a href="http://twitter.com/_harpb" style="text-decoration:None;"><b>@_harpb</b></a></br/>
 	{% endif %}
 </body>
