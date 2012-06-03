@@ -32,16 +32,6 @@
 		        text:'Instagram',
 		        id:'instagram',
 		        leaf:true
-		    },
-		    {
-		        text:'Tumblr',
-		        id:'tumblr',
-		        leaf:true
-		    },
-		    {
-		        text:'Twitter',
-		        id:'twitter',
-		        leaf:true
 		    }
 	   		]
 		}

@@ -27,7 +27,7 @@ class SinglyApi(object):
             response = requests.get(url, params=payload)
         else:
             response = requests.post(url, payload)
-        
+
         if response.status_code < 300:
             return response.status_code, simplejson.loads(response.content)
         else:
@@ -61,22 +61,51 @@ class SinglyApi(object):
         status_code, content = self.make_client_request(endpoint, payload=payload)
         return content
         
+    #===================================================================
+    # get_content_by_type
+    #===================================================================
+    def get_content_by_type(self, type, remove_duplicates=True):
+        endpoint = '/v%s/types/%s/' % (self.api_version, type)
+        if remove_duplicates:
+            payload = {'dedup': 'true'}
+        else:
+            payload = {}
+        status_code, content = self.make_client_request(endpoint, payload=payload)
+        return content
+   
     def get_user_photos(self):
         return self.get_content_by_type('photos')
         
     def get_photos_feed(self):
         return self.get_content_by_type('photos_feed')
         
-    def get_content_by_type(self, type):
-        endpoint = '/v%s/types/%s/' % (self.api_version, type)
-        status_code, content = self.make_client_request(endpoint)
-        return content
         
     def get_user_videos(self):
         return self.get_content_by_type('videos')
         
     def get_videos_feed(self):
         return self.get_content_by_type('videos_feed')
+        
+    #===========================================================================
+    # Content by Sevice
+    #===========================================================================
+    def get_content_by_service(self, service, type, remove_duplicates=True):
+        endpoint = '/v%s/services/%s/%s/' % (self.api_version, service, type)
+        if remove_duplicates:
+            payload = {'dedup': 'true'}
+        else:
+            payload = {}
+        status_code, content = self.make_client_request(endpoint, payload=payload)
+        return content
+       
+    def get_facebook_media(self):
+        return self.get_content_by_service('facebook', 'photos')
+    def get_instagram_media(self):
+        return self.get_content_by_service('instagram', 'media')
+    def get_tumblr_media(self):
+        return self.get_content_by_service('tumblr', 'posts')
+    def get_twitter_media(self):
+        return self.get_content_by_service('twitter', 'tweets')
         
 class SinglyApiHelper(object):
     redirect_url = '%s/authorize/callback/' % settings.HOSTNAME

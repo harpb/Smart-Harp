@@ -79,7 +79,7 @@ Ext.define('Ext.org.ImageView', {
     		
     		}
     		var endpoint = feeds[feedType];
-			this.store.proxy.url = '/rest/v1' + endpoint
+			this.store.proxy.url = '/rest/v1/' + feedType +'/'
 			params = {start:0, limit:25};
 			console.log(this.store)
 			this.store.load({params: params});	
