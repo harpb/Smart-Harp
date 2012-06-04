@@ -160,6 +160,7 @@ LOGGING = {
 #===============================================================================
 SINGLY_CLIENT_ID = '7470ee88ae39bb8c81f61aa25648570b'
 SINGLY_CLIENT_SECRET = 'b5bfe2f28bdd14cebcda52bbd29e91e5'
+SINGLY_LIMIT = 10
 
 #===============================================================================
 # CONFIGURE SERVER ENVIRONMENT

@@ -2,7 +2,8 @@ from oauth_hook import OAuthHook
 import requests
 import simplejson
 from webapp import settings
-from webapp.settings import SINGLY_CLIENT_ID, SINGLY_CLIENT_SECRET 
+from webapp.settings import SINGLY_CLIENT_ID, SINGLY_CLIENT_SECRET ,\
+    SINGLY_LIMIT
 
 class SinglyApiError(Exception):
     pass
@@ -28,7 +29,7 @@ class SinglyApi(object):
         if method == 'GET':
             if self.access_token is not None:
                 payload['access_token'] = self.access_token
-                payload['min_count'] = 100
+                payload['min_count'] = SINGLY_LIMIT
             response = requests.get(url, params=payload)
         else:
             response = requests.post(url, payload)
